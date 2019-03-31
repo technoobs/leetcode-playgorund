@@ -26,7 +26,8 @@ func main() {
 	intArray := generateIntArray(numArray)
 	fmt.Printf("asdasd: %d\n", intArray)
 
-	
+	// logic
+
 }
 
 // generateIntArray convert string value into integer array
@@ -39,4 +40,23 @@ func generateIntArray(numArray string) []int {
 	}
 
 	return slice
+}
+
+// Solution 01
+func solutionOne(numbers []int, expected int) []int {
+	result := make([]int, 2)
+	for i1, v1 := range numbers {
+		s := numbers[i1 + 1:]
+		for _, v2 := range s {
+			if v1 >= expected || v2 >= expected {
+				continue
+			}
+			if v1 + v2 == expected {
+				result[0] = v1
+				result[1] = v2
+				break
+			}
+		}
+	}
+	return result
 }
