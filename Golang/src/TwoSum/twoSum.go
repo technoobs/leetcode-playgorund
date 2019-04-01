@@ -5,29 +5,33 @@ main package implements the logic to solve LeetCode TwoSum problem
 package main
 
 import (
-	"fmt"
 	"flag"
-	"strings"
+	"fmt"
 	"strconv"
+	"strings"
 )
 
 var numArray string
 var result int
+var solution int
 
 func main() {
 	fmt.Println("LeetCode Two Sum problem")
 	flag.StringVar(&numArray, "num", "", "Number Array")
 	flag.IntVar(&result, "result", 0, "Calculation Result")
+	flag.IntVar(&solution, "solution", 0, "Solution")
 	flag.Parse()
 
-	fmt.Printf("Number Array is: [%s]\n", numArray)
-	fmt.Printf("Calculated Result should be : %d\n", result)
-
 	intArray := generateIntArray(numArray)
-	fmt.Printf("asdasd: %d\n", intArray)
 
 	// logic
-
+	switch solution {
+	case 1:
+		fmt.Println("Solution 1")
+		fmt.Printf("Return %d", solutionOne(intArray, result))
+	default:
+		fmt.Println("Solution not imeplemented")
+	}
 }
 
 // generateIntArray convert string value into integer array
@@ -46,14 +50,14 @@ func generateIntArray(numArray string) []int {
 func solutionOne(numbers []int, expected int) []int {
 	result := make([]int, 2)
 	for i1, v1 := range numbers {
-		s := numbers[i1 + 1:]
-		for _, v2 := range s {
+		s := numbers[i1+1:]
+		for i2, v2 := range s {
 			if v1 >= expected || v2 >= expected {
 				continue
 			}
-			if v1 + v2 == expected {
-				result[0] = v1
-				result[1] = v2
+			if v1+v2 == expected {
+				result[0] = i1
+				result[1] = i1 + 1 + i2
 				break
 			}
 		}
