@@ -29,6 +29,9 @@ func main() {
 	case 1:
 		fmt.Println("Solution 1")
 		fmt.Printf("Return %d", solutionOne(intArray, result))
+	case 2:
+		fmt.Println("Solution 2")
+		fmt.Printf("Return %d", solutionTwo(intArray, result))
 	default:
 		fmt.Println("Solution not imeplemented")
 	}
@@ -59,6 +62,27 @@ func solutionOne(numbers []int, expected int) []int {
 				result[0] = i1
 				result[1] = i1 + 1 + i2
 				break
+			}
+		}
+	}
+	return result
+}
+
+// Solution 02
+func solutionTwo(numbers []int, expected int) []int {
+	result := make([]int, 2)
+	for i1, v1 := range numbers {
+		if v1 > expected {
+			continue
+		}
+		a := expected - v1
+		s := numbers[i1+1:]
+		for i2, v2 := range s {
+			if a != v2 {
+				continue
+			} else {
+				result[0] = i1
+				result[1] = i1 + 1 + i2
 			}
 		}
 	}
