@@ -15,4 +15,10 @@ Explanation: 342 + 465 = 807.
 
 ### Usage
 * build
+```
+$ go build addTwoNumbers.go
+```
 * run
+```
+$ .\addTwoNumbers.exe -IntegerA=26 -IntegerB=324
+```
